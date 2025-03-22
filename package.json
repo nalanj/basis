@@ -1,0 +1,9 @@
+{
+	"name": "@nalanj/basis",
+	"type": "module",
+
+	"devDependencies": {
+		"@types/node": "22.13.11",
+		"tsx": "4.19.3"
+	}
+}
