@@ -100,11 +100,11 @@ function get_raw_body(
 	});
 }
 
-export async function getRequest(
+export function getRequest(
 	base: string,
 	req: IncomingMessage,
 	bodySizeLimit?: number,
-): Promise<Request> {
+): Request {
 	const headers = req.headers as Record<string, string>;
 	const request = new Request(base + req.url, {
 		// @ts-expect-error

@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { getRequest } from "./request";
 
 type BasisConfig = {
 	host: string | undefined;
@@ -13,8 +14,12 @@ type BasisInstance = {
 export async function basis(config: BasisConfig): Promise<BasisInstance> {
 	config.host ||= "0.0.0.0";
 
+	const base = `${config.host}${config.port === 80 ? "" : `:${config.port}`}`;
+
 	const server = createServer((req, res) => {
-		console.log(req.headers);
+		const request = getRequest(`https://${req.headers.host}`, req);
+
+		console.log(request.headers);
 
 		res.statusCode = 200;
 		res.end("Hello world");
